@@ -26,18 +26,18 @@ python Config.py
 ## 4. Ejecutar la aplicación Flask:
 python app.py
 
-##5. Asegurarse de que la base de datos se ha creado correctamente antes de ejecutar la aplicación Flask:
+## 5. Asegurarse de que la base de datos se ha creado correctamente antes de ejecutar la aplicación Flask:
 sqlite3 sigec_db.sqlite
 
-##6. Verificar la tabla creada:
+## 6. Verificar la tabla creada:
 .tables
 
-##7. Verificar la estructura de la tabla:
+## 7. Verificar la estructura de la tabla:
 .schema pacientes
 
-##8. Si todo está correcto, puedes proceder a probar las rutas de la API con herramientas como Postman o cURL.
+## 8. Si todo está correcto, puedes proceder a probar las rutas de la API con herramientas como Postman o cURL.
 
-##9. Para probar la API, asegúrate de que el servidor Flask esté corriendo y utiliza las siguientes rutas:
+## 9. Para probar la API, asegúrate de que el servidor Flask esté corriendo y utiliza las siguientes rutas:
  - GET /pacientes: Para listar todos los pacientes.
  - POST /pacientes: Para crear un nuevo paciente (requiere un JSON con los campos necesarios).
      return jsonify({'id': paciente_id}), 201
