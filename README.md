@@ -20,19 +20,25 @@ Asegúrese de seleccionar los archivos de descarga adecuados, ya que para ambos 
 Una vez descargados los archivos y descomprimidos, tienes que moverlos a la carpeta system32 para esto abre explordor de archivos y pega la siguiente ruta C:\WINDOWS\system32
 Mueve los archivos, te pedira permisos de administrador, acepta y listo
 
-## 3. Ejecutar el script para crear la base de datos:
-python Config.py
-
-## 4. Ejecutar la aplicación Flask:
+## 3. Ejecutar el script para crear la base de datos y ejecutar la pagina web:
+En caso de que ya haya una base de datos existente el programa utilizara esa
 python app.py
 
-## 5. Asegurarse de que la base de datos se ha creado correctamente antes de ejecutar la aplicación Flask:
+## 4 Prueba de la aplicacion
+Se ajunta un archivo "sigec_ddb.sqlite" con 3 pacientes para realizar pruebas
+En caso de que desee empezar con una base de datos desde 0, simplemente elimine el archivo "sigec_ddb.sqlite" y vuelva a ejecutar el archivo app.py
+abra el local host para verificar el funcionamiento el programa mediante el siguiente link
+# http://localhost:5000/
+
+##En caso de que no funcione siga los siguientes pasos para verificar la falla
+
+## 5. Asegurarse de que la base de datos se ha creado correctamente antes de ejecutar la aplicación Flask ejecutando el comando:
 sqlite3 sigec_db.sqlite
 
-## 6. Verificar la tabla creada:
+## 6. Verificar la tabla creada ejecutando el comando:
 .tables
 
-## 7. Verificar la estructura de la tabla:
+## 7. Verificar la estructura de la tabla ejecutando el comando:
 .schema pacientes
 
 ## 8. Si todo está correcto, puedes proceder a probar las rutas de la API con herramientas como Postman o cURL.
@@ -46,3 +52,7 @@ sqlite3 sigec_db.sqlite
  - GET /pacientes/<id>: Para obtener un paciente específico por ID.
  - PUT /pacientes/<id>: Para actualizar un paciente específico por ID (requiere un JSON con los campos a actualizar).
  - DELETE /pacientes/<id>: Para eliminar un paciente específico por ID.
+
+## 10. Si todo lo anterior arroja error 
+Es probable que haya sido a causa de una mala instalacion de las herramientas Flask o SQLite, pruebe instalar de nuevo
+
