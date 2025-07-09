@@ -26,8 +26,9 @@ python app.py
 
 ## 4 Prueba de la aplicacion
 Se ajunta un archivo "sigec_ddb.sqlite" con 3 pacientes para realizar pruebas
-En caso de que desee empezar con una base de datos desde 0, simplemente elimine el archivo "sigec_ddb.sqlite" y vuelva a ejecutar el archivo app.py
-abra el local host para verificar el funcionamiento el programa mediante el siguiente link
+En caso de que desee empezar con una base de datos desde 0, simplemente elimine el archivo "sigec_ddb.sqlite" y vuelva a ejecutar el archivo "app.py"
+
+Abra el local host para verificar el funcionamiento el programa mediante el siguiente link
 # http://localhost:5000/
 
 ##En caso de que no funcione siga los siguientes pasos para verificar la falla
