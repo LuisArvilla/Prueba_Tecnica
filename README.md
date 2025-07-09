@@ -72,9 +72,15 @@ Con un formulario en el que se solicita:
 
 ![image](https://github.com/user-attachments/assets/27a99e75-9f2d-4318-b659-3f21de4c0454)
 
-Y un boton para cargar los datos del paciente, en el apartado fecha el sistema permite que el usuario seleccione 
-su fecha de nacimiento mediante un calendario, en el apartado genero se despliega una barra condiferentes 
-opciones y en el apartado cedula solo es posible dijitar numeros sino el programa te indica que hay un error.
+Y un boton para cargar los datos del paciente, en el apartado fecha el sistema permite que el usuario:
+Seleccione su fecha de nacimiento mediante un calendario
+Seleccione su genero mediante un menu de opciones
+Escriba su ceula y el programa avisa si es una cedula que ya se encuentra en la base de datos 
+Adicionalmente en el apartado cedula solo es posible dijitar numeros sino el programa indica que hay un error y no permite el ingreso a la base de datos.
+En caso de un error en el registro por datos invalidos o multiples intentos en un solo momento un el programa manda un mensaje y continua su funcionamiento normal.
+![image](https://github.com/user-attachments/assets/bea86075-cd3e-4863-9f5a-ab03bba4c77e)
+
+![image](https://github.com/user-attachments/assets/dc79a28c-cd64-4721-a643-9fbadcd2a3da)
 
 Al añadir un paciente se muestra un mensaje y el ID asignado al mismo
 ![image](https://github.com/user-attachments/assets/4e7a13cd-b4db-497f-8476-7b0b536e2329)
