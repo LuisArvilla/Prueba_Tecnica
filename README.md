@@ -1,4 +1,4 @@
-# IPS
+# PRUEBA TECNICA
 
 ## Comandos de instalacion necesarios para ejecutar el código:
 
