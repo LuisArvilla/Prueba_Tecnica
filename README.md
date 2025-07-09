@@ -1,5 +1,9 @@
 # PRUEBA TECNICA
 
+## Duracion para el desarrollo del programa  Aproximadamente 100 minutos
+## Duracion del periodo de pruebas           Aproximadamente 50 minutos
+## Duracion de la creacion de este documento Aproximadamente 120 minutos
+
 ## Comandos de instalacion necesarios para ejecutar el código:
 
 ## 1. Instalar Flask:
