@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Pacientes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap (para estilos base) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        h2, h3 {
+            color: #343a40;
+        }
+
+        .form-control, .form-select {
+            border-radius: 0.5rem;
+        }
+
+        .btn-success {
+            border-radius: 0.5rem;
+        }
+
+        table {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #198754;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #mensaje {
+            min-height: 40px;
+        }
+    </style>
+</head>
+<body class="container py-5">
+
+    <h2 class="mb-4 text-center">Formulario de Registro de Pacientes</h2>
+
+    <!-- Formulario -->
+    <form id="formularioPaciente" class="p-4 bg-white shadow rounded mb-5">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="fecha_nacimiento" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="genero" class="form-label">Género</label>
+            <select class="form-select" id="genero" required>
+                <option value="">Seleccione</option>
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+                <option value="Otro">Otro</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="numero_identificacion" class="form-label">Número de Identificación</label>
+            <input type="text" class="form-control" id="numero_identificacion" required>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Guardar Paciente</button>
+    </form>
+    <!-- Barra de Busqueda de Pacientes -->
+        <h3 class="mt-5">Buscar paciente</h3>
+    <form method="GET" action="/buscar_paciente" class="mb-4">
+        <div class="row g-2">
+            <div class="col-md-3">
+                <select name="tipo" class="form-select" required>
+                    <option value="id">Por ID</option>
+                    <option value="cedula">Por Cédula</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <input type="text" name="valor" class="form-control" placeholder="Ingrese ID o cédula" required>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary w-100">Buscar</button>
+            </div>
+        </div>
+    </form>
+    
+{% if paciente_encontrado %}
+    <div class="alert alert-success">
+        <strong>Paciente encontrado:</strong><br>
+        ID: {{ paciente_encontrado.id }}<br>
+        Nombre: {{ paciente_encontrado.nombre }} {{ paciente_encontrado.apellido }}<br>
+        Fecha de nacimiento: {{ paciente_encontrado.fecha_nacimiento }}<br>
+        Género: {{ paciente_encontrado.genero }}<br>
+        Identificación: {{ paciente_encontrado.numero_identificacion }}
+    </div>
+{% elif paciente_encontrado is not none %}
+    <div class="alert alert-warning">Paciente no encontrado.</div>
+{% endif %}
+
+
+
+
+    <!-- Mensajes -->
+    <div id="mensaje" class="mb-4"></div>
+
+    <!-- Lista de pacientes -->
+    <h3 class="mb-3">Lista de Pacientes</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered text-center shadow-sm">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Género</th>
+                    <th>Identificación</th>
+                </tr>
+            </thead>
+            <tbody id="listaPacientes"></tbody>
+        </table>
+    </div>
+
+    <!-- Script -->
+    <script>
+        const formulario = document.getElementById('formularioPaciente');
+        const mensajeDiv = document.getElementById('mensaje');
+        const listaPacientes = document.getElementById('listaPacientes');
+
+        window.onload = cargarPacientes;
+
+        async function cargarPacientes() {
+            try {
+                const res = await fetch('/pacientes');
+                const pacientes = await res.json();
+
+                listaPacientes.innerHTML = '';
+
+                pacientes.forEach(p => {
+                    const fila = `
+                        <tr>
+                            <td>${p.id}</td>
+                            <td>${p.nombre}</td>
+                            <td>${p.apellido}</td>
+                            <td>${p.fecha_nacimiento}</td>
+                            <td>${p.genero}</td>
+                            <td>${p.numero_identificacion}</td>
+                        </tr>
+                    `;
+                    listaPacientes.innerHTML += fila;
+                });
+            } catch (error) {
+                mensajeDiv.innerHTML = `<div class="alert alert-danger">Error al cargar pacientes.</div>`;
+            }
+        }
+
+        formulario.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const paciente = {
+                nombre: document.getElementById('nombre').value,
+                apellido: document.getElementById('apellido').value,
+                fecha_nacimiento: document.getElementById('fecha_nacimiento').value,
+                genero: document.getElementById('genero').value,
+                numero_identificacion: document.getElementById('numero_identificacion').value
+            };
+
+            try {
+                const res = await fetch('/pacientes', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(paciente)
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    mensajeDiv.innerHTML = `<div class="alert alert-success">Paciente registrado con ID ${data.id}</div>`;
+                    formulario.reset();
+                    cargarPacientes();
+                } else {
+                    mensajeDiv.innerHTML = `<div class="alert alert-danger">Error: ${data.error}</div>`;
+                }
+            } catch (err) {
+                mensajeDiv.innerHTML = `<div class="alert alert-danger">Error al enviar los datos.</div>`;
+            }
+        });
+    </script>
+</body>
+</html>
+<!-- End of index.html -->
