@@ -57,3 +57,34 @@ sqlite3 sigec_db.sqlite
 ## 10. Si todo lo anterior arroja error 
 Es probable que haya sido a causa de una mala instalacion de las herramientas Flask o SQLite, pruebe instalar de nuevo
 
+Funcionamiento del programa:
+La pagina web cuenta con un dieño sencillo pero aagrdadble a la vista.
+Con un formulario en el que se ssolicita:
+• Nombre
+• Apellido
+• Fecha de Nacimiento
+• Género
+• Número de Identificación
+![image](https://github.com/user-attachments/assets/27a99e75-9f2d-4318-b659-3f21de4c0454)
+Y un boton para cargar los datos del paciente, en el apartado fecha el sistema permite que el usuario seleccione 
+su fecha de nacimiento mediante un calendario, en el apartado genero se despliega una barra condiferentes 
+opciones y en el apartado cedula solo es posible dijitar numeros sino el programa te indica que hay un error.
+
+Al añadir un paciente se muestra un mensaje y el ID asignado al mismo
+![image](https://github.com/user-attachments/assets/4e7a13cd-b4db-497f-8476-7b0b536e2329)
+
+
+Una seccion para buscar pacientes utilizando ya sea el ID del paciente o el numero de cedula
+Al buscar un paciente si este esta en la base de datos te muestra la informacion de este:
+![image](https://github.com/user-attachments/assets/50f549e6-f456-4467-943b-6ee9784e769e)
+
+Sino muestra un mensaje diciendo que "No se encontró ningún paciente con el criterio proporcionado."
+![image](https://github.com/user-attachments/assets/1467f7b7-aab3-4460-97a2-06796af66225)
+
+En la parte de abajo se puede observar la lista completa de los pacientes registrados en la base de datos
+![image](https://github.com/user-attachments/assets/fd35cee6-ce5c-4c8f-8d14-6f941e64d8d9)
+
+Imagenes de muestra del funcionamiento del programa:
+P
+![image](https://github.com/user-attachments/assets/8ea64efa-df50-45c2-aa2c-92bd292402b4)
+
