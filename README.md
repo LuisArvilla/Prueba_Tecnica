@@ -31,7 +31,7 @@ En caso de que desee empezar con una base de datos desde 0, simplemente elimine 
 Abra el local host para verificar el funcionamiento el programa mediante el siguiente link
 # http://localhost:5000/
 
-##En caso de que no funcione siga los siguientes pasos para verificar la falla
+## En caso de que no funcione siga los siguientes pasos para verificar la falla
 
 ## 5. Asegurarse de que la base de datos se ha creado correctamente antes de ejecutar la aplicación Flask ejecutando el comando:
 sqlite3 sigec_db.sqlite
